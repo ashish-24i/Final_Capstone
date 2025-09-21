@@ -8,7 +8,7 @@ function Home({ sideNavBar }) {
     return (
         <div className="home">
             <SideNAvBAr sideNavBar={sideNavBar} />
-            <HomePage />
+            <HomePage sideNavBar={sideNavBar} />
         </div>
     )
 
