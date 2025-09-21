@@ -1,6 +1,17 @@
+import { useState } from "react";
 import "./navBar.css"
 
-function NAvBar() {
+function NAvBar({ setSideNavBarFunc, sideNavBar }) {
+   const [navBarModel, setNavBArModel] = useState(false);
+
+   function handleCLickModel() {
+      setNavBArModel(!navBarModel)
+   }
+
+   function sideNavBarFunc() {
+      setSideNavBarFunc(!sideNavBar)
+   }
+
    return (
       <>
 
@@ -8,8 +19,8 @@ function NAvBar() {
 
             <div className="navBar-left flex">
 
-               <div className="p-6  text-3xl">
-                  <i className="fas fa-bars text-white "></i>
+               <div className="p-6  text-3xl" >
+                  <i onClick={sideNavBarFunc} className="fas fa-bars text-white " ></i>
                </div>
 
                <div className="flex items-center gap-2">
@@ -39,7 +50,15 @@ function NAvBar() {
 
                <i class="fas fa-bell text-white  pl-10"></i>
 
-               <i class="fas fa-user-circle text-white  ml-20"></i>
+               <i onClick={handleCLickModel} class="fas fa-user-circle text-white  ml-20"></i>
+
+               {navBarModel &&
+                  <div className="navbar-model">
+
+                     <div className="navbar-model-option text-white">Profile</div>
+                     <div className="navbar-model-option text-white">Log Out</div>
+                     <div className="navbar-model-option text-white">LOg In</div>
+                  </div>}
 
             </div>
 
