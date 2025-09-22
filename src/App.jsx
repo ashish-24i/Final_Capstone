@@ -3,8 +3,11 @@ import './App.css'
 import './index.css'
 import NAvBar from './Components/NavBAr/navBar'
 import Home from './Pages/Home/home'
+import Video from './Pages/Video/video'
 
 import { useState } from 'react'
+
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
 
@@ -19,7 +22,12 @@ function App() {
     <div className="App">
       <NAvBar setSideNavBarFunc={setSideNavBarFunc} sideNavBar={sideNavBar} />
 
-      <Home sideNavBar={sideNavBar} />
+      <Routes>
+        <Route path='/' element={<Home sideNavBar={sideNavBar} />} />
+        <Route path='/watch/:id' element={<Video />} />
+      </Routes>
+
+
 
     </div>
   )
