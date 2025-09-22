@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./navBar.css"
 
+import { Link, useNavigate } from "react-router-dom";
+
 function NAvBar({ setSideNavBarFunc, sideNavBar }) {
    const [navBarModel, setNavBArModel] = useState(false);
 
@@ -11,6 +13,16 @@ function NAvBar({ setSideNavBarFunc, sideNavBar }) {
    function sideNavBarFunc() {
       setSideNavBarFunc(!sideNavBar)
    }
+
+
+   const navigate = useNavigate()
+
+   function handleProfile() {
+      navigate('/user/7689')
+
+      setNavBArModel(false)
+   }
+
 
    return (
       <>
@@ -23,10 +35,10 @@ function NAvBar({ setSideNavBarFunc, sideNavBar }) {
                   <i onClick={sideNavBarFunc} className="fas fa-bars text-white " ></i>
                </div>
 
-               <div className="flex items-center gap-2">
+               <Link to={"/"} className="flex items-center gap-2">
                   <i className="fab fa-youtube text-red-600 text-5xl"></i>
                   <span className="text-2xl font-bold text-white">YouTube <sup className="text-gray-300 font-thin" >IN</sup></span>
-               </div>
+               </Link>
 
             </div>
 
@@ -55,7 +67,7 @@ function NAvBar({ setSideNavBarFunc, sideNavBar }) {
                {navBarModel &&
                   <div className="navbar-model">
 
-                     <div className="navbar-model-option text-white">Profile</div>
+                     <div className="navbar-model-option text-white" onClick={handleProfile}>Profile</div>
                      <div className="navbar-model-option text-white">Log Out</div>
                      <div className="navbar-model-option text-white">LOg In</div>
                   </div>}

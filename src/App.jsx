@@ -8,6 +8,7 @@ import Video from './Pages/Video/video'
 import { useState } from 'react'
 
 import { Route, Routes } from 'react-router-dom'
+import Profile from './Pages/Profile/profile'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home sideNavBar={sideNavBar} />} />
         <Route path='/watch/:id' element={<Video />} />
+        <Route path="/user/:id" element={<Profile sideNavBar={sideNavBar} />} />
       </Routes>
 
 

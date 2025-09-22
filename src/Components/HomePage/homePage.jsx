@@ -1,5 +1,7 @@
 import "./homePage.css"
 
+import { Link } from 'react-router-dom'
+
 function HomePage({ sideNavBar }) {
 
     const options = [
@@ -43,7 +45,7 @@ function HomePage({ sideNavBar }) {
 
             <div className={sideNavBar ? "home_mainPage" : "homeMainPageWithoutLink"}>
 
-                <div className="youtube_video">
+                <Link to={"/watch/9876"} className="youtube_video">
                     <div className="youtune_thumbnailBox">
 
                         <img src="https://i.ytimg.com/vi/71lJD9WmFgc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB2uW0j_1nM3f1gLNmJqyztqqTPnw" alt="thumbnail" className="youtube_thumbnailPic" />
@@ -68,9 +70,9 @@ function HomePage({ sideNavBar }) {
                     </div>
 
 
-                </div>
+                </Link>
 
-                <div className="youtube_video">
+                <Link to={'/watch/9897'} className="youtube_video">
                     <div className="youtune_thumbnailBox">
 
                         <img src="https://i.ytimg.com/vi/71lJD9WmFgc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB2uW0j_1nM3f1gLNmJqyztqqTPnw" alt="thumbnail" className="youtube_thumbnailPic" />
@@ -95,9 +97,9 @@ function HomePage({ sideNavBar }) {
                     </div>
 
 
-                </div>
+                </Link>
 
-                <div className="youtube_video">
+                <Link to={'/watch/9897'} className="youtube_video">
                     <div className="youtune_thumbnailBox">
 
                         <img src="https://i.ytimg.com/vi/71lJD9WmFgc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB2uW0j_1nM3f1gLNmJqyztqqTPnw" alt="thumbnail" className="youtube_thumbnailPic" />
@@ -122,9 +124,9 @@ function HomePage({ sideNavBar }) {
                     </div>
 
 
-                </div>
+                </Link>
 
-                <div className="youtube_video">
+                <Link to={'/watch/9897'} className="youtube_video">
                     <div className="youtune_thumbnailBox">
 
                         <img src="https://i.ytimg.com/vi/71lJD9WmFgc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB2uW0j_1nM3f1gLNmJqyztqqTPnw" alt="thumbnail" className="youtube_thumbnailPic" />
@@ -149,9 +151,9 @@ function HomePage({ sideNavBar }) {
                     </div>
 
 
-                </div>
+                </Link>
 
-                <div className="youtube_video">
+                <Link to={'/watch/9897'} className="youtube_video">
                     <div className="youtune_thumbnailBox">
 
                         <img src="https://i.ytimg.com/vi/71lJD9WmFgc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB2uW0j_1nM3f1gLNmJqyztqqTPnw" alt="thumbnail" className="youtube_thumbnailPic" />
@@ -176,9 +178,9 @@ function HomePage({ sideNavBar }) {
                     </div>
 
 
-                </div>
+                </Link>
 
-                <div className="youtube_video">
+                <Link to={'/watch/9897'} className="youtube_video">
                     <div className="youtune_thumbnailBox">
 
                         <img src="https://i.ytimg.com/vi/71lJD9WmFgc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB2uW0j_1nM3f1gLNmJqyztqqTPnw" alt="thumbnail" className="youtube_thumbnailPic" />
@@ -203,7 +205,7 @@ function HomePage({ sideNavBar }) {
                     </div>
 
 
-                </div>
+                </Link>
 
 
             </div>
