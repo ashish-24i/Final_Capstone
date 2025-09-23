@@ -2,9 +2,12 @@ import { useState } from "react";
 import "./navBar.css"
 
 import { Link, useNavigate } from "react-router-dom";
+import Login from "../Login/login";
 
 function NAvBar({ setSideNavBarFunc, sideNavBar }) {
    const [navBarModel, setNavBArModel] = useState(false);
+
+   const [login, setLogin] = useState(false);
 
    function handleCLickModel() {
       setNavBArModel(!navBarModel)
@@ -23,6 +26,20 @@ function NAvBar({ setSideNavBarFunc, sideNavBar }) {
       setNavBArModel(false)
    }
 
+   function setLoginModal() {
+      setLogin(false);
+   }
+
+   function onclickOfPopUpOption(button) {
+      setNavBArModel(false)
+
+      if (button == "login") {
+         setLogin(true);
+      }
+      else {
+
+      }
+   }
 
    return (
       <>
@@ -68,11 +85,15 @@ function NAvBar({ setSideNavBarFunc, sideNavBar }) {
                   <div className="navbar-model">
 
                      <div className="navbar-model-option text-white" onClick={handleProfile}>Profile</div>
-                     <div className="navbar-model-option text-white">Log Out</div>
-                     <div className="navbar-model-option text-white">LOg In</div>
+                     <div className="navbar-model-option text-white" onClick={() => onclickOfPopUpOption("logout")}>Log Out</div>
+                     <div className="navbar-model-option text-white " onClick={() => onclickOfPopUpOption("login")}>Login</div>
                   </div>}
 
             </div>
+
+            {
+               login && <Login setLoginModal={setLoginModal} />
+            }
 
          </div>
 

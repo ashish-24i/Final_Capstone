@@ -19,6 +19,16 @@
     align-items: center;
 }
 
+.profile-page-inactive {
+    flex-direction: column;
+    overflow-x: hidden;
+    flex: 1;
+    color: white;
+    margin-top: 56px;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile_top_section {
     width: 100%;
     display: flex;
