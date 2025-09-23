@@ -1,8 +1,20 @@
 import { Link } from "react-router-dom";
 import "./videoUpload.css"
 
+import { useState } from 'react';
+
 
 function VideoUpload() {
+
+    const [inputField, setInputField] = useState({ "title": "", "description": "", "videoLink": "", "thumbnail": "", "videoType": "" })
+
+    function handleOnChangeInput(event, name) {
+        setInputField({
+            ...inputField, [name]: event.target.value
+        })
+    }
+
+    console.log(inputField)
     return (
         <div className="videoUpload">
 
@@ -14,9 +26,9 @@ function VideoUpload() {
                 </div>
 
                 <div className="uploadForm">
-                    <input type="text" placeholder="title ofvideo" className="uploadFormInputs" />
-                    <input type="text" placeholder="Description" className="uploadFormInputs" />
-                    <input type="text" placeholder="Category" className="uploadFormInputs" />
+                    <input type="text" value={inputField.title} onChange={(e) => { handleOnChangeInput(e, "title") }} placeholder="title ofvideo" className="uploadFormInputs" />
+                    <input type="text" value={inputField.description} onChange={(e) => { handleOnChangeInput(e, "description") }} placeholder="Description" className="uploadFormInputs" />
+                    <input type="text" value={inputField.videoType} onChange={(e) => { handleOnChangeInput(e, "videoType") }} placeholder="Category" className="uploadFormInputs" />
 
                     <div>Thumbnail  <input type="file" accept="image/*" /></div>
 

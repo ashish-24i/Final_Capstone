@@ -2,8 +2,19 @@ import "./login.css"
 
 import { Link } from "react-router-dom";
 
+import { useState } from 'react'
+
 
 function Login({ setLoginModal }) {
+
+    const [loginField, setLoginField] = useState({ "userName": "", "password": "" });
+
+    function handleOnChangeInput(event, name) {
+        setLoginField({
+            ...loginField, [name]: event.target.value
+        })
+    }
+
     return (
         <div className="login bg-black z-50">
             <div className="logincard ">
@@ -15,12 +26,12 @@ function Login({ setLoginModal }) {
 
                     <div className="userNameLogin">
 
-                        <input className="userNameLoginUserName" placeholder="UserName" type="text" />
+                        <input className="userNameLoginUserName" value={loginField.userName} onChange={(e) => handleOnChangeInput(e, "userName")} placeholder="UserName" type="text" />
                     </div>
 
                     <div className="userNameLogin">
 
-                        <input className="userNameLoginUserName" placeholder="Password" type="password" />
+                        <input className="userNameLoginUserName" value={loginField.password} onChange={(e) => handleOnChangeInput(e, "password")} placeholder="Password" type="password" />
                     </div>
 
 
