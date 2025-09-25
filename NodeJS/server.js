@@ -1,17 +1,16 @@
-import express from 'express'
+const express = require("express")
+
+require('./Connections/conn.js')
 
 const app = express();
 
+app.use(express.json())
+
 const port = 3000;
 
+const AuthRoutes = require('./Routes/user.js')
 
-app.get('/', (req, res) => {
-
-    res.send({
-        message: "hii we have started our backend"
-    })
-
-})
+app.use('/auth', AuthRoutes);
 
 app.listen(port, () => {
     console.log("our backend project is running on 3000")
