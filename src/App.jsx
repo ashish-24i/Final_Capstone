@@ -5,9 +5,9 @@ import NAvBar from './Components/NavBAr/navBar'
 import Home from './Pages/Home/home'
 import Video from './Pages/Video/video'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useFetcher } from 'react-router-dom'
 import Profile from './Pages/Profile/profile'
 import VideoUpload from './Pages/videoUpload/videoUpload'
 import SignUp from './Pages/SignUp/signup'
@@ -16,9 +16,35 @@ function App() {
 
   const [sideNavBar, setSideNavBar] = useState(true)
 
+  const [videos, setVideos] = useState([]);
+
+  // async function fetchData(url) {
+  //   try {
+  //     const res = await fetch(url);
+  //     const data = await res.json();
+  //     console.log(data)
+  //     setVideos(data.videos);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // }
+
+
+  // useEffect(() => {
+
+  //   fetchData("http://localhost:3000/api/allvideo");
+
+
+
+  // }, [])
+
+
+
   function setSideNavBarFunc(value) {
     setSideNavBar(value)
   }
+
+
 
 
   return (
