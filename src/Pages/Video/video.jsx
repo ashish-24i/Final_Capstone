@@ -24,9 +24,9 @@ function Video() {
             const res = await fetch(url);
             const data = await res.json();
 
-            setData(data.video)
+            setData(data?.video)
 
-            setVideoUrl(data.video.videoLink)
+            setVideoUrl(data?.video?.videoLink)
 
 
 
@@ -159,7 +159,7 @@ function Video() {
 
                         {
 
-                            data1.map((item, index) => {
+                            data1?.map((item, index) => {
 
                                 return (
                                     <div className="youtubeselfcommnt">

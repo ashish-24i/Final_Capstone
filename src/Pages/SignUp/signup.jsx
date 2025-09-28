@@ -1,10 +1,13 @@
 import "./signup.css"
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import axios from 'axios';
 
+
+import { toast, ToastContainer } from 'react-toastify'
+//import comment from "../../../NodeJS/Modals/comment";
 
 function SignUp() {
 
@@ -12,6 +15,11 @@ function SignUp() {
 
     const [signUpField, setSignUpField] = useState({ "channelName": "", "userName": "", "password": "", "about": "", "profilePic": uploadedImageUrl })
 
+
+    const [progressBar, setProgressBar] = useState(false);
+
+
+    const navigate = useNavigate();
 
     function handleInputField(event, name) {
 
@@ -56,6 +64,27 @@ function SignUp() {
     }
     console.log(signUpField)
 
+
+    const handleSignup = async () => {
+
+        setProgressBar(true)
+
+        axios.post('http://localhost:3000/auth/signUp', signUpField).then((res) => {
+            console.log(res);
+
+            setProgressBar(false)
+
+            navigate('/');
+
+        }).catch((err) => {
+
+            console.log(err);
+
+            setProgressBar(false)
+        })
+
+    }
+
     return (
         <div className="signup   relative  bottom-14">
             <div className="signup_card">
@@ -82,16 +111,25 @@ function SignUp() {
                     </div>
 
                     <div className="signupbtns">
-                        <div className="signupbtn">Sign Up</div>
+                        <div className="signupbtn" onClick={handleSignup}  >Sign Up</div>
                         <Link to={'/'} className="signupbtn">Home Page</Link>
 
                     </div>
+
+
+
+                    {
+                        progressBar && <i className="fas fa-spinner fa-spin fa-3x text-blue-500"></i>
+
+                    }
                 </div>
 
 
 
 
             </div>
+
+            <ToastContainer />
 
         </div>
     )
