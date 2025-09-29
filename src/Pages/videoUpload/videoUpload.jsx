@@ -1,12 +1,18 @@
-import { Link } from "react-router-dom";
 import "./videoUpload.css"
 
-import { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+
+
+import { useState, useEffect } from 'react';
 
 import axios from "axios";
 
 
+
+
 function VideoUpload() {
+
+    const navigate = useNavigate();
 
     const [inputField, setInputField] = useState({ "title": "", "description": "", "videoLink": "", "thumbnail": "", "videoType": "" })
 
@@ -57,6 +63,26 @@ function VideoUpload() {
 
     console.log(inputField)
 
+    useEffect(() => {
+
+        let isLogin = localStorage.getItem("userId")
+
+        if (isLogin === null) {
+            navigate('/')
+        }
+    }, [])
+
+
+    const handleSubmitFunc = async () => {
+        await axios.post('http://localhost:3000/api/video', inputField, { withCredentials: true }).then((res) => {
+            console.log(res);
+
+            navigate('/')
+        }).then((err) => {
+            console.log(err);
+        })
+    }
+
     return (
         <div className="videoUpload">
 
@@ -89,7 +115,7 @@ function VideoUpload() {
 
                 <div className="uploadBtns">
 
-                    <div className="uploadBtn-form">Upload</div>
+                    <div className="uploadBtn-form" onClick={handleSubmitFunc}>Upload</div>
                     <Link to={'/'} className="uploadBtn-form">Home</Link>
                 </div>
 

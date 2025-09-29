@@ -73,7 +73,7 @@ function HomePage({ sideNavBar }) {
             <div className={sideNavBar ? "home_mainPage" : "homeMainPageWithoutLink"}>
 
                 {
-                    data.map((item, ind) => {
+                    data?.map((item, ind) => {
 
                         return (
 

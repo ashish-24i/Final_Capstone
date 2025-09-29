@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 
 function Video() {
+
+    const [comments, setComments] = useState([]);
 
     const [message, setMessage] = useState("");
 
@@ -59,6 +62,22 @@ function Video() {
     }, [])
 
 
+    const handleComment = async () => {
+        const body = {
+            "message": message,
+            "video": id
+        }
+
+        await axios.post('http://localhost:3000/commentApi/comment', body, { withCredentials: true }).then((res) => {
+            console.log(res)
+            const newComment = res.data.comment;
+            setComments([newComment, ...comments])
+            
+
+
+        }).catch((err) => console.log(err));
+
+    }
 
 
 
@@ -149,7 +168,7 @@ function Video() {
 
                             <div className="cancelSubmitComment">
                                 <div className="cancelcomment">Cancel</div>
-                                <div className="cancelcomment">Comment</div>
+                                <div className="cancelcomment" onClick={handleComment}>Comment</div>
                             </div>
                         </div>
                     </div>

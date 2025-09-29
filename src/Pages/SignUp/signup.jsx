@@ -6,7 +6,7 @@ import { useState } from "react";
 import axios from 'axios';
 
 
-import { toast, ToastContainer } from 'react-toastify'
+
 //import comment from "../../../NodeJS/Modals/comment";
 
 function SignUp() {
@@ -129,7 +129,7 @@ function SignUp() {
 
             </div>
 
-            <ToastContainer />
+
 
         </div>
     )

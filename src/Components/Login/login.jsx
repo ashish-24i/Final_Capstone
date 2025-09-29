@@ -1,8 +1,10 @@
 import "./login.css"
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from 'react'
+
+import axios from 'axios';
 
 
 function Login({ setLoginModal }) {
@@ -13,6 +15,31 @@ function Login({ setLoginModal }) {
         setLoginField({
             ...loginField, [name]: event.target.value
         })
+    }
+
+    const navigate = useNavigate()
+
+
+    const handleLoginFun = async () => {
+
+        axios.post("http://localhost:3000/auth/login", loginField, { withCredentials: true }).then((res) => {
+            console.log(res)
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("userId", res.data.user._id);
+            localStorage.setItem("userProfilePic", res.data.user.profilePic);
+            alert("data saved successfully")
+
+            setTimeout(() => {
+                navigate('/');
+                window.location.reload();
+            }, 2000);
+
+        }).catch((err) => {
+            console.log(err)
+
+            alert("invalid credentials")
+        })
+
     }
 
     return (
@@ -38,7 +65,7 @@ function Login({ setLoginModal }) {
                 </div>
 
                 <div className="login_buttons">
-                    <div className="login-btn">Login</div>
+                    <div className="login-btn" onClick={handleLoginFun}>Login</div>
                     <Link to={'/signup'} className="login-btn" onClick={() => setLoginModal()}>Sign Up</Link>
                     <div className="login-btn" onClick={() => setLoginModal()}>Cancel</div>
 
